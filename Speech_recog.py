@@ -5,6 +5,7 @@ r = sr.Recognizer()
 with sr.Microphone() as source:
     print("Say something!")
     r.dynamic_energy_threshold=True
+    r.adjust_for_ambient_noise(source, 0.5) 	# listen for 0.5 second to calibrate the energy threshold for ambient noise levels
     r.pause_threshold = 0.5
     audio = r.listen(source)
 
