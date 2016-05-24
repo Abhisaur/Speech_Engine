@@ -5,6 +5,7 @@ r = sr.Recognizer()
 with sr.Microphone() as source:
     print("Say something!")
     r.dynamic_energy_threshold=True
+    r.pause_threshold = 0.5
     audio = r.listen(source)
 
 # recognize speech using Sphinx
