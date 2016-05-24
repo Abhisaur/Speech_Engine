@@ -4,7 +4,8 @@ import speech_recognition as sr
 r = sr.Recognizer()
 with sr.Microphone() as source:
     print("Say something!")
-	audio = r.listen(source)
+    r.energy_threshold = 200
+    audio = r.listen(source)
     r.dynamic_energy_adjustment_ratio = 2		# speech is louder than ambedient noise by a factor of 2
 
 # recognize speech using Sphinx
