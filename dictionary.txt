@@ -3,23 +3,15 @@ am AE M
 any EH N IY
 anything EH N IY TH IH NG
 are AA R
-are(2) ER
-area EY R IY AA
-area(2) EH R IY AH
 back B AE K
 backward B AE K W ER D
-been B IH N
-been(2) B IY N
-breakfast B R EH K F AH S T
+been B IY N
 did D IH D
-dinner D IH N AH
 do D UW1
 doing D UW IH NG
 done D AH N
 down D AW N
 else EY L S
-else(2) EH L S
-else(3) EH L Z
 fine F AY N
 for F AO R
 forward F AO R W ER D
@@ -30,14 +22,10 @@ had HH AE D
 have HH AE V
 hello HH EH L OW
 hey HH EY
-hey(2) HH EH
-hey(3) HH AO
-her HH AH
-her(2) HH ER
+her HH ER
 her's HH ER Z
 hi HH AY
 him HH IH M
-him(2) IH M
 his HH IH Z
 how HH AW
 i AY
@@ -45,12 +33,10 @@ india IH N D IY AH
 is IH Z
 left L EH F T
 live L AY V
-live(2) L EY1 V
 lunch L AH N CH
 me M IY
 meet M IY T
 move M UW1 V
-moved M UW V D
 movement M UW V M AH N T
 movements M UW V M AH N T Z
 movements(2) M UW V M AH N T S
