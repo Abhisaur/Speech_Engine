@@ -1,5 +1,5 @@
 import speech_recognition as sr
-import pyttsx
+import os
 # obtain audio from the microphone
 r = sr.Recognizer()
 with sr.Microphone() as source:
@@ -12,10 +12,11 @@ with sr.Microphone() as source:
     audio = r.listen(source)
     
     # write audio to a WAV file
-with open("microphone-results.wav", "wb") as f:
-    f.write(audio.get_wav_data())
+#with open("microphone-results.wav", "wb") as f:
+#    f.write(audio.get_wav_data())
 ans = r.recognize_sphinx(audio)
 # recognize speech using Sphinx
+
 try:
     print("Sphinx thinks you said = " + ans)
 except sr.UnknownValueError:
@@ -23,11 +24,14 @@ except sr.UnknownValueError:
 except sr.RequestError as e:
     print("Sphinx error; {0}".format(e))
 
+if ans=='' :
+	exit()
 
 from chatterbot import ChatBot
 from chatterbot.training.trainers import ListTrainer
 
-
+if os.path.isfile("database.db"):
+	os.remove("database.db")
 # Create a new instance of a ChatBot
 bot = ChatBot("Terminal",
     storage_adapter="chatterbot.adapters.storage.JsonDatabaseAdapter",
@@ -37,10 +41,11 @@ bot = ChatBot("Terminal",
         "chatterbot.adapters.logic.ClosestMatchAdapter"
     ],
     input_adapter="chatterbot.adapters.input.VariableInputTypeAdapter",
-    output_adapter="chatterbot.adapters.output.OutputFormatAdapter",
+    #output_adapter="chatterbot.adapters.output.OutputFormatAdapter",
     format='text',
-    database="../database.db"
+    database="database.db"
 )
+
 bot.set_trainer(ListTrainer)
 bot.train([
     "hello",
@@ -54,9 +59,36 @@ bot.train([
     "its okay", 
     "what is your name",
     "my name is HURO",
+    "bye",
+    "bye bye",
+    "see you later",
+    "take care",
+    "you too",
+    "good morning",
+    "very good morning",
+    "good afternoon",
+    "very good afternoon",
+    "good evening",
+    "charming evening",
+    "good night",
+    "sweet dreams",
+    "same to you",
+    "tell me about yourself",
+    "I am HURO. I am 60 centimeters tall and weighs 3 kilograms. I have 8 degrees of freedom, 2 in head and 3 in each arm. I am using ODroid and Arduino UNO.",
+    "what is your height",
+    "I am 60 centimeters tall",
+    "what is your weight",
+    "3 kilograms",
+    "team members",
+    "Ujjwal, Rijak, Abhishek, Saurabh, Mrinaal, Buvi, Shruti, Nitish"
 ])
-response= bot.get_response(ans)
-engine=pyttsx.init()
+
+response = bot.get_response(ans)
+print(response)
+
+import pyttsx
+
+engine = pyttsx.init()
 engine.setProperty('rate', 120)
 engine.say(response)
 engine.runAndWait()
